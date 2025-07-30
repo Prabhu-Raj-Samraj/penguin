@@ -54,12 +54,12 @@ with st.sidebar:
   gender = st.selectbox('Gender',('male','female'))
 
   data = {
-    'island': 'Island where the penguin was observed (Biscoe, Dream, Torgersen)',
-    'bill_length_mm': 'Bill length of the penguin in millimeters (mm)',
-    'bill_depth_mm': 'Bill depth (height) of the penguin in millimeters (mm)',
-    'flipper_length_mm': 'Flipper length of the penguin in millimeters (mm)',
-    'body_mass_g': 'Body mass of the penguin in grams (g)',
-    'gender': 'Biological sex of the penguin (Male or Female)'
+    'island': island,
+    'bill_length_mm': bill_length_mm,
+    'bill_depth_mm': bill_depth_mm,
+    'flipper_length_mm': flipper_length_mm,
+    'body_mass_g': body_mass_g,
+    'gender': gender
 }
 input_df = pd.DataFrame(data, index = [0])
 input_penguins = pd.concat([input_df, X_raw], axis = 0)
@@ -69,7 +69,22 @@ with st.expander("Input data"):
   input_df
   st.write("**Combineed data**")
   input_penguins
-  
 
+#One hot encoding for X
+encode = ['island', 'sex']
+df_penguin = pd.get_dummies(input_penguins, prefix = encode)
+X = df_penguins[1:]
+input_row
 
+#one hot encoding for y
+target_mapper = {
+ 'Adelie' : 0,
+ 'Gentoo' : 1,
+ 'Chinstrap' : 2
+}
+
+def target_encode(val):
+ return target_mapper[val]
+
+y = y_raw.apply(target_encode)
 
