@@ -71,10 +71,10 @@ with st.expander("Input data"):
   input_penguins
 
 #One hot encoding for X
-encode = ['island', 'sex']
-df_penguins = pd.get_dummies(input_penguins)
+encode_ = ['island', 'sex']
+df_penguins = pd.get_dummies(input_penguins, columns = encode_)
+input_row = df_penguins.iloc[0:1]  # User input
 X = df_penguins[1:]
-input_row
 
 #one hot encoding for y
 target_mapper = {
