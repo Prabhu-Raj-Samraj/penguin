@@ -25,9 +25,14 @@ with st.expander("Data"):
   des = df.describe()
   des
 
-  st.write("### 🐧 Count of Penguin Species")
+  st.write("Count of Penguin Species")
   fig, ax = plt.subplots()
   sns.countplot(data=df, x='species', ax=ax)
+  st.pyplot(fig)
+
+  st.write("### 📏 Bill Length vs Bill Depth")
+  fig, ax = plt.subplots()
+  sns.scatterplot(data=df, x='bill_length_mm', y='bill_depth_mm', hue='species', ax=ax)
   st.pyplot(fig)
   
  
