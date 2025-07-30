@@ -2,6 +2,7 @@ import pandas as pd
 import streamlit as st
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier
+import matplotlib.pyplot as plt
  
 st.title("Penguine Speicy Prediction ML app")
 st.info("This is end-to-end Machine Learning App")
@@ -18,6 +19,16 @@ with st.expander("Data"):
   st.write("Target Variable")
   y_raw = df.species
   y_raw
+
+  st.write("Descriptive Statistics")
+  des = df.describe()
+  des
+
+  st.write("### 🐧 Count of Penguin Species")
+  fig, ax = plt.subplots()
+  sns.countplot(data=df, x='species', ax=ax)
+  st.pyplot(fig)
+  
  
 with st.expander("Data Visualization"):
   pass
