@@ -23,21 +23,23 @@ with st.expander("Data"):
 
   st.write("Descriptive Statistics")
   des = df.describe()
-  des
-
+  des  
+ 
+with st.expander("Data Visualization"):
   st.write("Count of Penguin Species")
   fig, ax = plt.subplots()
   sns.countplot(data=df, x='species', ax=ax)
   st.pyplot(fig)
 
-  st.write("### 📏 Bill Length vs Bill Depth")
+  st.write("Bill Length vs Bill Depth")
   fig, ax = plt.subplots()
   sns.scatterplot(data=df, x='bill_length_mm', y='bill_depth_mm', hue='species', ax=ax)
   st.pyplot(fig)
-  
- 
-with st.expander("Data Visualization"):
-  pass
+
+  st.write("Bill Length vs Body Mass")
+  fig, ax = plt.subplots()
+  sns.scatterplot(data=df, x='bill_length_mm', y='body_mass_g', hue='species', ax=ax)
+  st.pyplot(fig)
  
 with st.expander("Input data"):
   pass
